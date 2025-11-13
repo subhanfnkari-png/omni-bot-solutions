@@ -3,7 +3,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="py-24 gradient-hero relative overflow-hidden">
+    <section className="py-24 gradient-primary relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyem0wLTZWMzBIMjR2LTJoMTJ6bTAtNnYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20" />
       
       <div className="container mx-auto px-4 relative z-10">
