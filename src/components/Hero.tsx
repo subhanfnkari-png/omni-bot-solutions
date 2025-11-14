@@ -5,53 +5,53 @@ import heroImage from "@/assets/hero-person.jpg";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 px-4 gradient-soft relative overflow-hidden">
+    <section className="pt-20 pb-8 px-4 gradient-soft relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-secondary/30 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
       
       <div className="container mx-auto relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
+        <div className="max-w-4xl mx-auto text-center mb-6 animate-fade-in">
           {/* Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-balance leading-tight">
             Boost sales and support with an{" "}
             <span className="text-primary">AI-powered</span> chatbot
           </h1>
           
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Create instant conversations with customers across WhatsApp, Instagram, Messenger, and your website.
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+            Provide instant, AI-powered support and keep customers happy, anytime, anywhere.
           </p>
 
           {/* Email Capture Form */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-xl mx-auto mb-8">
+          <div className="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-xl mx-auto mb-4">
             <Input
               type="email"
-              placeholder="Enter your email"
-              className="h-12 text-lg shadow-soft border-2 focus:border-primary"
+              placeholder="Enter your business email"
+              className="h-10 text-base shadow-soft border-2 focus:border-primary"
             />
-            <Button size="lg" className="w-full sm:w-auto h-12 px-8 shadow-warm hover:scale-105 transition-transform">
+            <Button size="lg" className="w-full sm:w-auto h-10 px-6 shadow-warm hover:scale-105 transition-transform">
               Sign up free
             </Button>
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-success flex items-center justify-center">
-                <span className="text-white text-xs">✓</span>
+              <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center">
+                <span className="text-white text-[10px]">✓</span>
               </div>
               <span>Free 14-day trial</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-success flex items-center justify-center">
-                <span className="text-white text-xs">✓</span>
+              <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center">
+                <span className="text-white text-[10px]">✓</span>
               </div>
               <span>No credit card required</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-success flex items-center justify-center">
-                <span className="text-white text-xs">✓</span>
+              <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center">
+                <span className="text-white text-[10px]">✓</span>
               </div>
               <span>Setup in 5 minutes</span>
             </div>
@@ -59,14 +59,12 @@ const Hero = () => {
         </div>
 
         {/* Hero Image with Floating Elements */}
-        <div className="max-w-3xl mx-auto relative">
-          <div className="relative rounded-3xl overflow-hidden shadow-soft">
-            <img
-              src={heroImage}
-              alt="AI Chatbot in action"
-              className="w-full h-auto"
-            />
-          </div>
+        <div className="max-w-2xl mx-auto relative">
+          <img
+            src={heroImage}
+            alt="AI Chatbot in action"
+            className="w-full h-auto relative"
+          />
 
           {/* Floating Chat Bubbles */}
           <div className="absolute -top-4 -left-4 chat-bubble floating max-w-[200px]">
