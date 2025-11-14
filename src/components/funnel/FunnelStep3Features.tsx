@@ -40,7 +40,7 @@ const FunnelStep3Features = () => {
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="text-center mb-12">
+      <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Choose your features
         </h2>
@@ -57,7 +57,7 @@ const FunnelStep3Features = () => {
           </Badge>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {essentialFeatures.map((feature) => {
             const isSelected = selectedEssentials.includes(feature);
 
@@ -65,11 +65,11 @@ const FunnelStep3Features = () => {
               <label
                 key={feature}
                 className={`
-                  feature-card flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer
+                  feature-card flex items-start gap-3 p-3 rounded-lg border-2 cursor-pointer
                   transition-all duration-200 hover:shadow-soft
                   ${isSelected 
                     ? 'border-primary bg-primary/5' 
-                    : 'border-border bg-background hover:border-primary/50'
+                    : 'border-border bg-card hover:border-primary/50'
                   }
                 `}
               >
@@ -95,7 +95,7 @@ const FunnelStep3Features = () => {
           value={otherFeatures}
           onChange={(e) => setOtherFeatures(e.target.value)}
           placeholder="Describe any additional features you need..."
-          className="min-h-24"
+          className="min-h-20"
           maxLength={500}
         />
         <div className="flex justify-between items-center mt-1">
@@ -108,19 +108,19 @@ const FunnelStep3Features = () => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-4 sticky bottom-0 bg-background/80 backdrop-blur-sm py-4 -mx-4 px-4 md:-mx-8 md:px-8 border-t border-border mt-8">
+      <div className="flex justify-between gap-3 pt-8 pb-4 border-t border-border mt-8">
         <Button
           onClick={handleBack}
           variant="outline"
-          size="lg"
-          className="w-full md:w-auto min-w-32"
+          size="default"
+          className="min-w-[120px]"
         >
           Back
         </Button>
         <Button
           onClick={handleNext}
-          size="lg"
-          className="w-full md:w-auto min-w-48"
+          size="default"
+          className="min-w-[140px]"
         >
           Next
         </Button>

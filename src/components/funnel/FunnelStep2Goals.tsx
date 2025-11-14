@@ -3,70 +3,49 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
 
-const goalsByIndustry: Record<string, string[]> = {
-  staffing: [
-    "Pre-screen candidates",
-    "Collect documents/CV",
-    "Book interviews",
-    "Onboarding reminders"
-  ],
-  compliance: [
-    "Enroll staff",
-    "Certificate reminders",
-    "Policy updates",
-    "Compliance FAQs"
-  ],
-  telemarketing: [
-    "Warm leads",
-    "Qualify interest",
-    "Book sales calls",
-    "Follow-up reminders"
-  ],
-  clinics: [
-    "Triage inquiries",
-    "Book appointments",
-    "Send reminders",
-    "Pre-visit info"
-  ],
-  realestate: [
-    "Qualify buyers/tenants",
-    "Schedule viewings",
-    "Property lists",
-    "Post-viewing follow-ups"
-  ],
-  ecommerce: [
-    "Recover carts",
-    "Product FAQs",
-    "Order tracking",
-    "Promotions"
-  ],
-  education: [
-    "Capture applications",
-    "Demo classes",
-    "Materials delivery",
-    "Payments & reminders"
-  ],
-  beauty: [
-    "Book appointments",
-    "Reduce no-shows",
-    "Upsell packages",
-    "Collect feedback"
-  ],
-  other: [
-    "Lead capture",
-    "FAQs",
-    "Bookings/meetings",
-    "Payments",
-    "Custom workflow"
-  ],
-};
+const goalCategories = [
+  {
+    title: "Staffing & Recruitment",
+    goals: ["Pre-screen candidates", "Collect documents/CV", "Book interviews", "Onboarding reminders"]
+  },
+  {
+    title: "Compliance & HSE",
+    goals: ["Enroll staff", "Certificate reminders", "Policy updates", "Compliance FAQs"]
+  },
+  {
+    title: "Telemarketing / Inside Sales",
+    goals: ["Warm leads", "Qualify interest", "Book sales calls", "Follow-up reminders"]
+  },
+  {
+    title: "Clinics & Dentists",
+    goals: ["Triage inquiries", "Book appointments", "Send reminders", "Pre-visit info"]
+  },
+  {
+    title: "Real Estate",
+    goals: ["Qualify buyers/tenants", "Schedule viewings", "Property lists", "Post-viewing follow-ups"]
+  },
+  {
+    title: "E-commerce / D2C",
+    goals: ["Recover carts", "Product FAQs", "Order tracking", "Promotions"]
+  },
+  {
+    title: "Education / Training",
+    goals: ["Capture applications", "Demo classes", "Materials delivery", "Payments & reminders"]
+  },
+  {
+    title: "Beauty / Salons",
+    goals: ["Book appointments", "Reduce no-shows", "Upsell packages", "Collect feedback"]
+  },
+  {
+    title: "Other",
+    goals: ["Lead capture", "FAQs", "Bookings/meetings", "Payments", "Custom workflow"]
+  }
+];
 
 const FunnelStep2Goals = () => {
-  const { industry, goals, updateGoals, setCurrentStep } = useFunnelStore();
+  const { goals, updateGoals, setCurrentStep } = useFunnelStore();
   const [selectedGoals, setSelectedGoals] = useState<string[]>(goals);
   const [error, setError] = useState("");
-
-  const availableGoals = goalsByIndustry[industry] || goalsByIndustry.other;
 
   const toggleGoal = (goal: string) => {
     setError("");
@@ -92,8 +71,8 @@ const FunnelStep2Goals = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="text-center mb-12">
+    <div className="max-w-5xl mx-auto animate-fade-in">
+      <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           What outcomes do you want?
         </h2>
@@ -102,35 +81,41 @@ const FunnelStep2Goals = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        {availableGoals.map((goal) => {
-          const isSelected = selectedGoals.includes(goal);
+      <div className="space-y-6 mb-8">
+        {goalCategories.map((category) => (
+          <div key={category.title} className="goal-section">
+            <h3 className="text-sm font-semibold text-primary mb-3">
+              {category.title}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {category.goals.map((goal) => {
+                const isSelected = selectedGoals.includes(goal);
 
-          return (
-            <label
-              key={goal}
-              className={`
-                goal-card p-5 rounded-xl border-2 cursor-pointer transition-all duration-200
-                hover:shadow-warm
-                ${isSelected 
-                  ? 'border-primary bg-primary/5 shadow-soft' 
-                  : 'border-border bg-background hover:border-primary/50'
-                }
-              `}
-            >
-              <div className="flex items-start gap-4">
-                <Checkbox
-                  checked={isSelected}
-                  onCheckedChange={() => toggleGoal(goal)}
-                  className="mt-0.5"
-                />
-                <div className="flex-1">
-                  <h4 className="font-medium text-base">{goal}</h4>
-                </div>
-              </div>
-            </label>
-          );
-        })}
+                return (
+                  <label
+                    key={goal}
+                    className={`
+                      goal-card p-3 rounded-lg border-2 cursor-pointer transition-all duration-200
+                      ${isSelected 
+                        ? 'border-primary bg-primary/5 shadow-soft' 
+                        : 'border-border bg-card hover:border-primary/50'
+                      }
+                    `}
+                  >
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        checked={isSelected}
+                        onCheckedChange={() => toggleGoal(goal)}
+                        className="mt-0.5"
+                      />
+                      <span className="text-sm font-medium">{goal}</span>
+                    </div>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
 
       {error && (
@@ -139,19 +124,23 @@ const FunnelStep2Goals = () => {
         </div>
       )}
 
-      <div className="flex justify-between gap-4 sticky bottom-0 bg-background/80 backdrop-blur-sm py-4 -mx-4 px-4 md:-mx-8 md:px-8 border-t border-border mt-8">
+      <p className="text-xs text-muted-foreground italic text-center mb-6">
+        💡 Your selections can be refined during the onboarding call
+      </p>
+
+      <div className="flex justify-between gap-3 pt-8 pb-4 border-t border-border mt-8">
         <Button
           onClick={handleBack}
           variant="outline"
-          size="lg"
-          className="w-full md:w-auto min-w-32"
+          size="default"
+          className="min-w-[120px]"
         >
           Back
         </Button>
         <Button
           onClick={handleNext}
-          size="lg"
-          className="w-full md:w-auto min-w-48"
+          size="default"
+          className="min-w-[140px]"
         >
           Next
         </Button>

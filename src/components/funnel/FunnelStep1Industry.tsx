@@ -81,8 +81,8 @@ const FunnelStep1Industry = () => {
   const isValid = selectedIndustry && (selectedIndustry !== "other" || note.trim().length > 0);
 
   return (
-    <div className="max-w-5xl mx-auto animate-fade-in">
-      <div className="text-center mb-12">
+    <div className="max-w-4xl mx-auto animate-fade-in">
+      <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Which best describes your business?
         </h2>
@@ -91,7 +91,7 @@ const FunnelStep1Industry = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
         {industries.map((item) => {
           const Icon = item.icon;
           const isSelected = selectedIndustry === item.id;
@@ -101,21 +101,20 @@ const FunnelStep1Industry = () => {
               key={item.id}
               onClick={() => handleSelect(item.id)}
               className={`
-                industry-card p-6 rounded-2xl border-2 text-left transition-all duration-200
-                hover:shadow-warm
+                industry-card p-5 rounded-xl border-2 text-left transition-all duration-200
                 ${isSelected 
-                  ? 'border-primary bg-primary/5 shadow-warm' 
-                  : 'border-border bg-background hover:border-primary/50'
+                  ? 'border-primary bg-primary/5 shadow-soft' 
+                  : 'border-border bg-card hover:border-primary/50'
                 }
               `}
             >
               <div className={`
-                w-12 h-12 rounded-xl flex items-center justify-center mb-4
+                w-12 h-12 rounded-xl flex items-center justify-center mb-3
                 ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}
               `}>
                 <Icon className="w-6 h-6" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
+              <h3 className="font-semibold text-base mb-1">{item.name}</h3>
               <p className="text-sm text-muted-foreground">{item.description}</p>
             </button>
           );
@@ -131,21 +130,21 @@ const FunnelStep1Industry = () => {
             value={note}
             onChange={(e) => setNote(e.target.value)}
             placeholder="e.g., answer common questions, collect leads to Google Sheets, book calls Tue/Thu only..."
-            className="min-h-32"
+            className="min-h-20"
             maxLength={500}
           />
-          <div className="text-xs text-muted-foreground mt-1 text-right">
+          <span className="text-xs text-muted-foreground float-right mt-1">
             {note.length}/500
-          </div>
+          </span>
         </div>
       )}
 
-      <div className="flex justify-end sticky bottom-0 bg-background/80 backdrop-blur-sm py-4 -mx-4 px-4 md:-mx-8 md:px-8 border-t border-border mt-8">
+      <div className="flex justify-end gap-3 pt-8 pb-4 border-t border-border mt-8">
         <Button
           onClick={handleNext}
           disabled={!isValid}
-          size="lg"
-          className="w-full md:w-auto min-w-48"
+          size="default"
+          className="min-w-[140px]"
         >
           Next
         </Button>

@@ -129,6 +129,13 @@ All colors MUST be HSL.
   .funnel-content-scrollable {
     overflow-y: auto;
     height: calc(100% - 80px);
+    padding: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .funnel-content-scrollable {
+      padding: 32px;
+    }
   }
 
   .funnel-content-scrollable::-webkit-scrollbar {
@@ -157,7 +164,8 @@ All colors MUST be HSL.
   .goal-card:hover,
   .feature-card:hover,
   .preset-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(44, 36, 22, 0.1);
   }
 
   .integration-chip {
