@@ -7,52 +7,68 @@ const Outcomes = () => {
       icon: Calendar,
       title: "More bookings",
       description: "Turn messages into meetings automatically.",
-      stat: "+47% avg booking rate",
+      stat: "+47%",
+      statLabel: "avg booking rate",
       delay: "0ms"
     },
     {
       icon: Zap,
       title: "Faster support",
       description: "Instant answers from your docs; clean handoff to your team.",
-      stat: "3x faster response time",
+      stat: "3x",
+      statLabel: "faster response time",
       delay: "100ms"
     },
     {
       icon: Target,
       title: "Stronger follow-ups",
       description: "Approved templates that re-engage leads at scale.",
-      stat: "+62% conversion rate",
+      stat: "+62%",
+      statLabel: "conversion rate",
       delay: "200ms"
     }
   ];
 
   return (
-    <section className="py-24 gradient-soft relative overflow-hidden">
+    <section className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Outcomes you can expect in 30 days
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            Outcomes you can <span className="relative inline-block">expect
+              <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
+            </span> in 30 days
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {outcomes.map((outcome, index) => (
             <Card 
               key={outcome.title}
-              className={`p-8 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-105 border-2 hover:border-primary ${
+              className={`relative p-8 lg:p-10 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-105 border-2 hover:border-primary bg-gradient-to-br from-white to-muted/20 ${
                 index === 1 ? 'md:translate-y-8' : ''
               }`}
               style={{ animationDelay: outcome.delay }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <outcome.icon className="w-8 h-8 text-primary" />
+              {/* Large stat number at top right */}
+              <div className="absolute top-6 right-6 text-6xl font-bold text-primary/10">
+                {outcome.stat}
               </div>
-              <h3 className="text-2xl font-bold mb-3">{outcome.title}</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+
+              {/* Icon with gradient background */}
+              <div className="relative w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-6 shadow-soft">
+                <outcome.icon className="w-10 h-10 text-primary" />
+              </div>
+
+              <h3 className="text-2xl lg:text-3xl font-bold mb-4 relative z-10">{outcome.title}</h3>
+              
+              <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-6 relative z-10">
                 {outcome.description}
               </p>
-              <div className="text-sm text-primary font-semibold">
-                {outcome.stat}
+
+              {/* Stat badge at bottom */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                <span className="text-2xl font-bold text-primary">{outcome.stat}</span>
+                <span className="text-sm font-medium text-foreground">{outcome.statLabel}</span>
               </div>
             </Card>
           ))}
