@@ -98,7 +98,7 @@ const FunnelStep5Summary = () => {
 
   return (
     <div className="max-w-6xl mx-auto animate-fade-in">
-      <div className="text-center mb-12">
+      <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Your tailored plan — final details
         </h2>
@@ -109,7 +109,7 @@ const FunnelStep5Summary = () => {
 
       <div className="grid lg:grid-cols-2 gap-8 mb-8">
         {/* Left Column - Summary */}
-        <div className="bg-gradient-soft rounded-2xl p-6 md:p-8 border border-border">
+        <div className="bg-gradient-soft rounded-2xl p-5 md:p-6 border border-border">
           <h3 className="text-2xl font-bold mb-6">What you selected</h3>
 
           <div className="space-y-6">
@@ -196,7 +196,7 @@ const FunnelStep5Summary = () => {
         </div>
 
         {/* Right Column - Form */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-2">
               Full name <span className="text-destructive">*</span>
@@ -229,7 +229,9 @@ const FunnelStep5Summary = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Company</label>
+            <label className="block text-sm font-medium mb-2">
+              Company <span className="text-xs text-muted-foreground">(optional)</span>
+            </label>
             <Input
               value={formData.company}
               onChange={(e) => updateField("company", e.target.value)}
@@ -238,7 +240,9 @@ const FunnelStep5Summary = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Website</label>
+            <label className="block text-sm font-medium mb-2">
+              Website <span className="text-xs text-muted-foreground">(optional)</span>
+            </label>
             <Input
               value={formData.website}
               onChange={(e) => updateField("website", e.target.value)}
@@ -251,7 +255,9 @@ const FunnelStep5Summary = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">WhatsApp number</label>
+            <label className="block text-sm font-medium mb-2">
+              WhatsApp number <span className="text-xs text-muted-foreground">(optional)</span>
+            </label>
             <Input
               value={formData.whatsapp}
               onChange={(e) => updateField("whatsapp", e.target.value)}
@@ -352,14 +358,21 @@ const FunnelStep5Summary = () => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-4 sticky bottom-0 bg-background/80 backdrop-blur-sm py-4 -mx-4 px-4 md:-mx-8 md:px-8 border-t border-border">
+      <div className="flex justify-between gap-3 pt-8 pb-4 border-t border-border mt-8">
         <Button
           onClick={handleBack}
           variant="outline"
-          size="lg"
-          className="w-full md:w-auto min-w-32"
+          size="default"
+          className="min-w-[120px]"
         >
           Back
+        </Button>
+        <Button
+          onClick={handleSubmit}
+          size="default"
+          className="min-w-[140px]"
+        >
+          Get my tailored plan
         </Button>
       </div>
     </div>
