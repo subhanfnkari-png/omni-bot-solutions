@@ -1,9 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import HowItWorks from "@/components/HowItWorks";
-import CaseStudy from "@/components/CaseStudy";
-import WhyThisWorks from "@/components/WhyThisWorks";
+import SocialProof from "@/components/SocialProof";
+import VideoSection from "@/components/VideoSection";
+import Outcomes from "@/components/Outcomes";
+import IndustriesSection from "@/components/IndustriesSection";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -14,10 +14,10 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
-      <Features />
-      <HowItWorks />
-      <CaseStudy />
-      <WhyThisWorks />
+      <SocialProof />
+      <VideoSection />
+      <Outcomes />
+      <IndustriesSection />
       <Pricing />
       <FAQ />
       <CTA />

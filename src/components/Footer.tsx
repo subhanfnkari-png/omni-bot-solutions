@@ -12,21 +12,21 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
                 <MessageSquare className="w-6 h-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">AI Chatbot Solutions</span>
+              <span className="text-xl font-bold">SpuntaBot</span>
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Transform your customer service with intelligent, multi-platform AI chatbots. 
-              Available 24/7 on WhatsApp, Instagram, Messenger, and your website.
+              Transform your WhatsApp into a revenue channel with custom chatbots. 
+              Book appointments, answer questions, and engage leads—automatically.
             </p>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Product</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
+              <li><a href="#outcomes" className="hover:text-primary transition-colors">Solutions</a></li>
+              <li><a href="#pricing" className="hover:text-primary transition-colors">Pricing</a></li>
+              <li><a href="#industries" className="hover:text-primary transition-colors">Industries</a></li>
+              <li><a href="#faq" className="hover:text-primary transition-colors">FAQ</a></li>
             </ul>
           </div>
           
@@ -43,7 +43,7 @@ const Footer = () => {
         
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} AI Chatbot Solutions. All rights reserved.
+            © {currentYear} SpuntaBot. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
