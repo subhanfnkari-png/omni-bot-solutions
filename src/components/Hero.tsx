@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users, Clock, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-person.jpg";
+import FunnelModal from "@/components/funnel/FunnelModal";
 
 const Hero = () => {
+  const [funnelOpen, setFunnelOpen] = useState(false);
+
   return (
-    <section className="pt-32 pb-20 px-4 gradient-soft relative overflow-hidden">
+    <>
+      <section className="pt-32 pb-20 px-4 gradient-soft relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-secondary/30 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
@@ -24,7 +29,11 @@ const Hero = () => {
             </p>
 
             {/* CTA Button */}
-            <Button size="lg" className="mb-8 h-12 px-8 shadow-warm hover:scale-105 transition-transform">
+            <Button 
+              size="lg" 
+              className="mb-8 h-12 px-8 shadow-warm hover:scale-105 transition-transform"
+              onClick={() => setFunnelOpen(true)}
+            >
               Get Started
             </Button>
 
@@ -102,9 +111,12 @@ const Hero = () => {
               </div>
             </div>
           </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <FunnelModal open={funnelOpen} onOpenChange={setFunnelOpen} />
+    </>
   );
 };
 
