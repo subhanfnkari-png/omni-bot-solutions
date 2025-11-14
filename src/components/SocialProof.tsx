@@ -1,43 +1,50 @@
-import { Briefcase, Stethoscope, Building, ShoppingCart, GraduationCap, Sparkles, Users, Phone } from "lucide-react";
+import { Building2, Boxes, TrendingUp, Briefcase, Store, GraduationCap, Heart, Phone } from "lucide-react";
 
 const SocialProof = () => {
-  const icons = [
-    { Icon: Briefcase, label: "Staffing" },
-    { Icon: Stethoscope, label: "Clinics" },
-    { Icon: Building, label: "Real Estate" },
-    { Icon: ShoppingCart, label: "E-commerce" },
-    { Icon: GraduationCap, label: "Education" },
-    { Icon: Sparkles, label: "Beauty" },
-    { Icon: Users, label: "Training" },
-    { Icon: Phone, label: "Sales" },
+  const companies = [
+    { Icon: Building2, name: "TechCorp" },
+    { Icon: Boxes, name: "LogiFlow" },
+    { Icon: TrendingUp, name: "SalesHub" },
+    { Icon: Briefcase, name: "StaffPro" },
+    { Icon: Store, name: "RetailMax" },
+    { Icon: GraduationCap, name: "EduTech" },
+    { Icon: Heart, name: "HealthCare+" },
+    { Icon: Phone, name: "CallCenter" },
   ];
 
-  // Duplicate icons for seamless loop
-  const allIcons = [...icons, ...icons];
+  // Duplicate for seamless loop
+  const allCompanies = [...companies, ...companies];
 
   return (
-    <section className="py-12 bg-muted/30 overflow-hidden">
+    <section className="py-16 bg-white border-y border-border overflow-hidden">
       <div className="container mx-auto px-4">
-        <p className="text-center text-sm text-muted-foreground mb-8">
-          Trusted by teams in staffing, clinics, real estate, and e-commerce.
+        <p className="text-center text-base font-medium text-foreground mb-10">
+          Trusted by leading companies worldwide
         </p>
         
         <div className="relative">
-          {/* Left fade overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+          {/* Left fade overlay - stronger */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           
-          {/* Scrolling icon row */}
-          <div className="flex gap-12 animate-scroll">
-            {allIcons.map((item, index) => (
-              <item.Icon 
-                key={index} 
-                className="w-8 h-8 text-muted-foreground/40 flex-shrink-0" 
-              />
+          {/* Scrolling logo row */}
+          <div className="flex gap-16 items-center animate-scroll">
+            {allCompanies.map((company, index) => (
+              <div 
+                key={index}
+                className="flex flex-col items-center gap-2 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
+              >
+                <div className="w-20 h-20 rounded-xl bg-muted/30 flex items-center justify-center">
+                  <company.Icon className="w-10 h-10 text-muted-foreground" />
+                </div>
+                <span className="text-xs font-semibold text-muted-foreground">
+                  {company.name}
+                </span>
+              </div>
             ))}
           </div>
           
-          {/* Right fade overlay */}
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+          {/* Right fade overlay - stronger */}
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
         </div>
       </div>
     </section>

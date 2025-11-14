@@ -33,10 +33,12 @@ const FAQ = () => {
     <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Frequently asked questions
-            </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            Frequently <span className="relative inline-block">asked
+              <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
+            </span> questions
+          </h2>
             <p className="text-xl text-muted-foreground">
               Everything you need to know about getting started
             </p>

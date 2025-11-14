@@ -14,8 +14,10 @@ const CTA = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center text-primary-foreground">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready for your tailored plan?
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Ready for your <span className="relative inline-block">tailored
+                <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-white/30 via-white/50 to-transparent -z-10"></span>
+              </span> plan?
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Pick your industry, choose features, and we'll send scope, timeline, and a price band.
