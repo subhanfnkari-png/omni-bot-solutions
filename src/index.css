@@ -7,6 +7,11 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+  
   :root {
     /* Bright & Warm Color System */
     --background: 36 100% 95%;        /* Warm Cream #FFF5E6 */
@@ -102,6 +107,19 @@ All colors MUST be HSL.
     50% {
       transform: translateY(-10px);
     }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
   }
 
   /* Funnel Modal Styles */
