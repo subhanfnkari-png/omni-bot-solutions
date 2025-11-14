@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { MessageSquare, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import FunnelModal from "@/components/funnel/FunnelModal";
 
 const Navigation = () => {
+  const [funnelOpen, setFunnelOpen] = useState(false);
+
   return (
+    <>
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-soft">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
@@ -34,7 +39,11 @@ const Navigation = () => {
           </div>
 
           {/* CTA Button */}
-          <Button size="lg" className="hidden md:flex shadow-warm hover:scale-105 transition-transform">
+          <Button 
+            size="lg" 
+            className="hidden md:flex shadow-warm hover:scale-105 transition-transform"
+            onClick={() => setFunnelOpen(true)}
+          >
             Sign up free
           </Button>
 
@@ -45,6 +54,9 @@ const Navigation = () => {
         </div>
       </div>
     </nav>
+
+    <FunnelModal open={funnelOpen} onOpenChange={setFunnelOpen} />
+    </>
   );
 };
 

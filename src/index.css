@@ -103,6 +103,71 @@ All colors MUST be HSL.
       transform: translateY(-10px);
     }
   }
+
+  /* Funnel Modal Styles */
+  .funnel-modal-content {
+    background: hsl(var(--background));
+    border: none;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .funnel-modal-content {
+      border-radius: 24px;
+      width: 95vw;
+      height: 95vh;
+      max-height: 900px;
+    }
+  }
+
+  .funnel-content-scrollable {
+    overflow-y: auto;
+    height: calc(100% - 80px);
+  }
+
+  .funnel-content-scrollable::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .funnel-content-scrollable::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  .funnel-content-scrollable::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  .industry-card,
+  .goal-card,
+  .feature-card,
+  .preset-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .industry-card:hover,
+  .goal-card:hover,
+  .feature-card:hover,
+  .preset-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .integration-chip {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .integration-chip:hover {
+    transform: translateY(-1px);
+  }
 }
 
 @layer base {
