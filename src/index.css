@@ -13,83 +13,103 @@ All colors MUST be HSL.
   }
   
   :root {
-    /* Bright & Warm Color System */
-    --background: 36 100% 95%;        /* Warm Cream #FFF5E6 */
-    --foreground: 36 38% 13%;         /* Warm Dark #2C2416 */
-    --card: 0 0% 100%;                /* Pure White for cards */
-    --card-foreground: 36 38% 13%;    /* Warm Dark */
-    --popover: 0 0% 100%;
-    --popover-foreground: 36 38% 13%;
-    --primary: 42 100% 65%;           /* Warm Yellow/Gold #FFB84D */
-    --primary-foreground: 36 38% 13%; /* Warm Dark */
-    --secondary: 28 100% 87%;         /* Peach #FFD4B8 */
-    --secondary-foreground: 36 38% 13%;
-    --muted: 36 50% 90%;              /* Lighter Cream */
-    --muted-foreground: 36 25% 35%;   /* Muted Warm */
-    --accent: 14 100% 68%;            /* Soft Orange #FF8A5B */
-    --accent-foreground: 36 38% 13%;
+    /* Blue Branding Color System */
+    --background: 210 71% 18%;        /* Dark Blue #0A2E4F */
+    --foreground: 0 0% 100%;          /* White #FFFFFF */
+    --card: 210 54% 31%;              /* Medium Blue #1E4A6B */
+    --card-foreground: 0 0% 100%;     /* White */
+    --popover: 210 54% 31%;           /* Medium Blue #1E4A6B */
+    --popover-foreground: 0 0% 100%;  /* White */
+    --primary: 200 65% 47%;           /* Blue #2E8BC0 */
+    --primary-foreground: 0 0% 100%;  /* White */
+    --secondary: 210 54% 31%;         /* Medium Blue #1E4A6B */
+    --secondary-foreground: 0 0% 100%; /* White */
+    --muted: 210 50% 25%;             /* Darker Medium Blue */
+    --muted-foreground: 194 71% 73%;  /* Sky Blue #87CEEB */
+    --accent: 194 71% 73%;            /* Sky Blue #87CEEB */
+    --accent-foreground: 210 71% 18%; /* Dark Blue */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 36 30% 85%;             /* Warm Border */
-    --input: 36 30% 85%;
-    --ring: 42 100% 65%;              /* Warm Yellow */
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 45% 35%;            /* Blue Border */
+    --input: 210 45% 35%;             /* Blue Input Border */
+    --ring: 200 65% 47%;              /* Blue #2E8BC0 */
     --success: 145 58% 62%;           /* Mint Green #6BCF8E */
     --success-foreground: 0 0% 100%;
     --radius: 1rem;
   }
 
   .dark {
-    /* Keep same bright theme - no dark mode */
-    --background: 36 100% 95%;
-    --foreground: 36 38% 13%;
-    --card: 0 0% 100%;
-    --card-foreground: 36 38% 13%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 36 38% 13%;
-    --primary: 42 100% 65%;
-    --primary-foreground: 36 38% 13%;
-    --secondary: 28 100% 87%;
-    --secondary-foreground: 36 38% 13%;
-    --muted: 36 50% 90%;
-    --muted-foreground: 36 25% 35%;
-    --accent: 14 100% 68%;
-    --accent-foreground: 36 38% 13%;
+    /* Blue Branding Color System - Dark Mode */
+    --background: 210 71% 18%;        /* Dark Blue #0A2E4F */
+    --foreground: 0 0% 100%;          /* White #FFFFFF */
+    --card: 210 54% 31%;              /* Medium Blue #1E4A6B */
+    --card-foreground: 0 0% 100%;     /* White */
+    --popover: 210 54% 31%;           /* Medium Blue #1E4A6B */
+    --popover-foreground: 0 0% 100%;  /* White */
+    --primary: 200 65% 47%;           /* Blue #2E8BC0 */
+    --primary-foreground: 0 0% 100%;  /* White */
+    --secondary: 210 54% 31%;         /* Medium Blue #1E4A6B */
+    --secondary-foreground: 0 0% 100%; /* White */
+    --muted: 210 50% 25%;             /* Darker Medium Blue */
+    --muted-foreground: 194 71% 73%;  /* Sky Blue #87CEEB */
+    --accent: 194 71% 73%;            /* Sky Blue #87CEEB */
+    --accent-foreground: 210 71% 18%; /* Dark Blue */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 36 30% 85%;
-    --input: 36 30% 85%;
-    --ring: 42 100% 65%;
-    --success: 145 58% 62%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 45% 35%;            /* Blue Border */
+    --input: 210 45% 35%;             /* Blue Input Border */
+    --ring: 200 65% 47%;              /* Blue #2E8BC0 */
+    --success: 145 58% 62%;           /* Mint Green #6BCF8E */
+    --success-foreground: 0 0% 100%;
   }
 }
 
 @layer utilities {
   .gradient-warm {
-    background: linear-gradient(135deg, hsl(36 100% 95%), hsl(28 100% 87%));
+    background: linear-gradient(135deg, hsl(210 71% 18%), hsl(210 54% 31%), hsl(200 65% 47%));
   }
   
   .gradient-primary {
-    background: linear-gradient(135deg, hsl(42 100% 65%), hsl(14 100% 68%));
+    background: linear-gradient(135deg, hsl(200 65% 47%), hsl(194 71% 73%));
   }
   
   .gradient-soft {
-    background: linear-gradient(180deg, hsl(36 100% 95%), hsl(0 0% 100%));
+    background: linear-gradient(180deg, hsl(210 71% 18%), hsl(210 54% 31%));
+  }
+  
+  .gradient-hero {
+    background: linear-gradient(135deg, #0A2E4F, #1E4A6B, #2E8BC0);
+  }
+  
+  .gradient-button {
+    background: linear-gradient(135deg, #2E8BC0 0%, #87CEEB 50%, #2E8BC0 100%);
   }
   
   .shadow-soft {
-    box-shadow: 0 4px 20px rgba(44, 36, 22, 0.08);
+    box-shadow: 0 4px 20px rgba(10, 46, 79, 0.3);
   }
   
   .shadow-warm {
-    box-shadow: 0 8px 30px rgba(255, 184, 77, 0.2);
+    box-shadow: 0 8px 30px rgba(46, 139, 192, 0.4);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
   }
   
   .text-balance {
     text-wrap: balance;
   }
   
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(200 65% 47%), hsl(194 71% 73%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
   .chat-bubble {
-    @apply bg-white rounded-2xl shadow-soft p-4 border border-border;
+    @apply bg-card rounded-2xl shadow-soft p-4 border border-border;
   }
   
   .floating {
@@ -183,7 +203,7 @@ All colors MUST be HSL.
   .feature-card:hover,
   .preset-card:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(44, 36, 22, 0.1);
+    box-shadow: 0 4px 16px rgba(46, 139, 192, 0.3);
   }
 
   .integration-chip {

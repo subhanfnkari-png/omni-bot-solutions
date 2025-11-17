@@ -129,7 +129,7 @@ const Features = () => {
                 </div>
               </div>
               <div className="flex-shrink-0">
-                <button className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all hover:scale-105">
+                <button className="bg-card text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all hover:scale-105">
                   Get Started Free
                 </button>
               </div>

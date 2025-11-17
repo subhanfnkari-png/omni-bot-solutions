@@ -16,7 +16,7 @@ const SocialProof = () => {
   const allCompanies = [...companies, ...companies];
 
   return (
-    <section className="py-16 bg-white border-y border-border overflow-hidden">
+    <section className="py-16 bg-card border-y border-border overflow-hidden">
       <div className="container mx-auto px-4">
         <p className="text-center text-base font-medium text-foreground mb-10">
           Trusted by leading companies worldwide
@@ -24,7 +24,7 @@ const SocialProof = () => {
         
         <div className="relative">
           {/* Left fade overlay - stronger */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
           
           {/* Scrolling logo row */}
           <div className="flex gap-16 items-center animate-scroll">
@@ -44,7 +44,7 @@ const SocialProof = () => {
           </div>
           
           {/* Right fade overlay - stronger */}
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         </div>
       </div>
     </section>

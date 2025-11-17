@@ -54,7 +54,7 @@ const Hero = () => {
 
           {/* Trust chips with checkmarks */}
           <div className="flex flex-wrap gap-3">
-            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-success/20 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card border border-success/20 shadow-sm">
               <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center flex-shrink-0">
                 <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -63,7 +63,7 @@ const Hero = () => {
               <span className="text-xs font-medium text-foreground">Go live in 5–7 days</span>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-success/20 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card border border-success/20 shadow-sm">
               <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center flex-shrink-0">
                 <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -72,7 +72,7 @@ const Hero = () => {
               <span className="text-xs font-medium text-foreground">24/7 replies + handover</span>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-success/20 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card border border-success/20 shadow-sm">
               <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center flex-shrink-0">
                 <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

@@ -28,7 +28,7 @@ const VideoSection = () => {
           {/* Video container - SMALLER */}
           <div className="max-w-4xl mx-auto relative">
             {/* Video embed with aspect ratio */}
-            <div className="relative rounded-2xl overflow-hidden shadow-warm border-4 border-white bg-black aspect-video">
+            <div className="relative rounded-2xl overflow-hidden shadow-warm border-4 border-card bg-black aspect-video">
               {/* Placeholder - will be replaced with actual video */}
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
                 <Button size="lg" className="rounded-full w-20 h-20 shadow-warm">
