@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { MessageSquare, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FunnelModal from "@/components/funnel/FunnelModal";
+import logo from "@/assets/sodlogo.png";
 
 const Navigation = () => {
   const [funnelOpen, setFunnelOpen] = useState(false);
@@ -22,9 +23,11 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <MessageSquare className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img 
+                src={logo} 
+                alt="SpuntaBot Logo" 
+                className="w-10 h-10 rounded-xl object-contain"
+              />
               <span className="text-xl font-bold text-foreground">SpuntaBot</span>
             </div>
 

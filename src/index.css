@@ -14,24 +14,24 @@ All colors MUST be HSL.
   
   :root {
     /* Blue Branding Color System */
-    --background: 210 71% 18%;        /* Dark Blue #0A2E4F */
-    --foreground: 0 0% 100%;          /* White #FFFFFF */
-    --card: 210 54% 31%;              /* Medium Blue #1E4A6B */
-    --card-foreground: 0 0% 100%;     /* White */
+    --background: 0 0% 100%;          /* White #FFFFFF */
+    --foreground: 210 71% 18%;       /* Dark Blue #0A2E4F */
+    --card: 0 0% 100%;                /* White */
+    --card-foreground: 210 71% 18%;  /* Dark Blue */
     --popover: 210 54% 31%;           /* Medium Blue #1E4A6B */
     --popover-foreground: 0 0% 100%;  /* White */
     --primary: 200 65% 47%;           /* Blue #2E8BC0 */
     --primary-foreground: 0 0% 100%;  /* White */
     --secondary: 210 54% 31%;         /* Medium Blue #1E4A6B */
     --secondary-foreground: 0 0% 100%; /* White */
-    --muted: 210 50% 25%;             /* Darker Medium Blue */
-    --muted-foreground: 194 71% 73%;  /* Sky Blue #87CEEB */
+    --muted: 210 20% 96%;             /* Light Gray */
+    --muted-foreground: 210 10% 40%;  /* Dark Gray for text */
     --accent: 194 71% 73%;            /* Sky Blue #87CEEB */
     --accent-foreground: 210 71% 18%; /* Dark Blue */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 45% 35%;            /* Blue Border */
-    --input: 210 45% 35%;             /* Blue Input Border */
+    --border: 210 20% 85%;            /* Light Gray Border */
+    --input: 210 20% 85%;             /* Light Gray Input Border */
     --ring: 200 65% 47%;              /* Blue #2E8BC0 */
     --success: 145 58% 62%;           /* Mint Green #6BCF8E */
     --success-foreground: 0 0% 100%;
@@ -40,24 +40,24 @@ All colors MUST be HSL.
 
   .dark {
     /* Blue Branding Color System - Dark Mode */
-    --background: 210 71% 18%;        /* Dark Blue #0A2E4F */
-    --foreground: 0 0% 100%;          /* White #FFFFFF */
-    --card: 210 54% 31%;              /* Medium Blue #1E4A6B */
-    --card-foreground: 0 0% 100%;     /* White */
+    --background: 0 0% 100%;          /* White #FFFFFF */
+    --foreground: 210 71% 18%;       /* Dark Blue #0A2E4F */
+    --card: 0 0% 100%;                /* White */
+    --card-foreground: 210 71% 18%;  /* Dark Blue */
     --popover: 210 54% 31%;           /* Medium Blue #1E4A6B */
     --popover-foreground: 0 0% 100%;  /* White */
     --primary: 200 65% 47%;           /* Blue #2E8BC0 */
     --primary-foreground: 0 0% 100%;  /* White */
     --secondary: 210 54% 31%;         /* Medium Blue #1E4A6B */
     --secondary-foreground: 0 0% 100%; /* White */
-    --muted: 210 50% 25%;             /* Darker Medium Blue */
-    --muted-foreground: 194 71% 73%;  /* Sky Blue #87CEEB */
+    --muted: 210 20% 96%;             /* Light Gray */
+    --muted-foreground: 210 10% 40%;  /* Dark Gray for text */
     --accent: 194 71% 73%;            /* Sky Blue #87CEEB */
     --accent-foreground: 210 71% 18%; /* Dark Blue */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 45% 35%;            /* Blue Border */
-    --input: 210 45% 35%;             /* Blue Input Border */
+    --border: 210 20% 85%;            /* Light Gray Border */
+    --input: 210 20% 85%;             /* Light Gray Input Border */
     --ring: 200 65% 47%;              /* Blue #2E8BC0 */
     --success: 145 58% 62%;           /* Mint Green #6BCF8E */
     --success-foreground: 0 0% 100%;

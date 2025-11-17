@@ -73,10 +73,10 @@ const Features = () => {
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Powerful Features</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Everything you need to automate customer service
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Built for businesses that want to scale their support and sales without hiring more staff.
           </p>
         </div>
@@ -129,7 +129,7 @@ const Features = () => {
                 </div>
               </div>
               <div className="flex-shrink-0">
-                <button className="bg-card text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all hover:scale-105">
+                <button className="gradient-primary text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 shadow-warm transition-all hover:scale-105">
                   Get Started Free
                 </button>
               </div>

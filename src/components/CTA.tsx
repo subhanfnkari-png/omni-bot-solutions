@@ -24,8 +24,8 @@ const CTA = () => {
             </p>
             <Button 
               size="lg" 
-              variant="secondary" 
-              className="shadow-warm hover:scale-105 transition-transform" 
+              className="!bg-white !text-foreground shadow-warm hover:scale-105 transition-transform hover:!bg-white/90 border-2 border-white hover:!text-foreground"
+              style={{ background: 'white', backgroundColor: 'white' }}
               onClick={() => setFunnelOpen(true)}
             >
               Get started Now

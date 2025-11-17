@@ -30,7 +30,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-card">
+    <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">

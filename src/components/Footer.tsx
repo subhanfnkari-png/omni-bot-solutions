@@ -1,4 +1,4 @@
-import { MessageSquare } from "lucide-react";
+import logo from "@/assets/sodlogo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,9 +9,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <MessageSquare className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img 
+                src={logo} 
+                alt="SpuntaBot Logo" 
+                className="w-10 h-10 rounded-xl object-contain"
+              />
               <span className="text-xl font-bold">SpuntaBot</span>
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-md">

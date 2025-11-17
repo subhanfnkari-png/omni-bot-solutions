@@ -19,10 +19,10 @@ const Pricing = () => {
 
   return (
     <>
-      <section id="pricing" className="py-24 gradient-warm">
+      <section id="pricing" className="py-24 gradient-primary">
         <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
             Start with a <span className="relative inline-block">30-day Pilot
               <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
             </span>

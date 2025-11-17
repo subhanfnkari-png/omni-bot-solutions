@@ -30,10 +30,10 @@ const Outcomes = () => {
   ];
 
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
+    <section className="py-24 gradient-primary relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
             Outcomes you can <span className="relative inline-block">expect
               <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
             </span> in 30 days
@@ -44,7 +44,7 @@ const Outcomes = () => {
           {outcomes.map((outcome, index) => (
             <Card 
               key={outcome.title}
-              className={`relative p-8 lg:p-10 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-105 border-2 hover:border-primary bg-gradient-to-br from-card to-muted/20 ${
+              className={`relative p-8 lg:p-10 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-105 border-2 hover:border-primary bg-white ${
                 index === 1 ? 'md:translate-y-8' : ''
               }`}
               style={{ animationDelay: outcome.delay }}
