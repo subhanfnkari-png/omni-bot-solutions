@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center px-4 gradient-soft relative overflow-hidden">
+      <section className="min-h-screen flex items-center px-4 pt-16 md:pt-20 gradient-soft relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-20 right-10 w-64 h-64 bg-secondary/30 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
@@ -21,7 +21,7 @@ const Hero = () => {
         <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* LEFT COLUMN - Content */}
-            <div className="text-left animate-fade-in">
+            <div className="text-center md:text-left animate-fade-in">
               {/* Headline */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
                 Turn WhatsApp into a <span className="relative inline-block">revenue channel
@@ -30,12 +30,12 @@ const Hero = () => {
               </h1>
               
               {/* Subtitle */}
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto md:mx-0">
                 We build custom chatbots that book appointments, answer from your docs, send approved templates, and hand off to a human—fast.
               </p>
 
               {/* Two CTA buttons */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap gap-4 mb-8 justify-center md:justify-start">
                 <Button 
                   size="lg" 
                   className="shadow-warm hover:scale-105 transition-transform"
@@ -53,7 +53,7 @@ const Hero = () => {
               </div>
 
           {/* Trust chips with checkmarks */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center md:justify-start">
             <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card border border-success/20 shadow-sm">
               <div className="w-4 h-4 rounded-full bg-success flex items-center justify-center flex-shrink-0">
                 <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
