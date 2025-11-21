@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: calc(80px + var(--banner-height, 0px));
   }
   
   :root {
@@ -138,8 +138,21 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
   .animate-scroll {
     animation: scroll 30s linear infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
   }
 
   /* Funnel Modal Styles */

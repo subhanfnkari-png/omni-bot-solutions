@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center px-4 pt-16 md:pt-20 gradient-primary relative overflow-hidden">
+      <section className="min-h-screen flex items-center px-4 pt-16 md:pt-20 gradient-primary relative overflow-hidden" style={{ paddingTop: 'calc(4rem + var(--banner-height, 0px))' }}>
         {/* Decorative Elements */}
         <div className="absolute top-20 right-10 w-64 h-64 bg-secondary/30 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
