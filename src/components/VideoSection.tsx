@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, FileText, MessageSquare, Users, Settings } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 import FunnelModal from "@/components/funnel/FunnelModal";
 
 const VideoSection = () => {
   const [funnelOpen, setFunnelOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -16,12 +18,12 @@ const VideoSection = () => {
         <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-foreground">
-            See how it <span className="relative inline-block">works
+            {t("video.title")} <span className="relative inline-block">{t("video.in60Seconds")}
               <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
-            </span> in 60 seconds
+            </span>
           </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Quick tour of templates, grounded answers (from your docs), human handoff, and the admin we use for clients.
+              {t("video.description")}
             </p>
           </div>
 
@@ -45,7 +47,7 @@ const VideoSection = () => {
               className="shadow-warm hover:scale-105 transition-transform" 
               onClick={() => setFunnelOpen(true)}
             >
-              Get started
+              {t("video.startNow")}
             </Button>
             <Button 
               size="lg" 
@@ -54,7 +56,7 @@ const VideoSection = () => {
               asChild
             >
               <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-                Book a 15-min call
+                {t("video.bookACall")}
               </a>
             </Button>
           </div>

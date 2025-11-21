@@ -4,28 +4,31 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FAQ = () => {
+  const { t } = useTranslation();
+  
   const faqs = [
     {
-      question: "Do we need Meta Business verification?",
-      answer: "Yes— we guide you step by step through the Meta Business verification process. Our team will provide clear documentation and support to ensure smooth approval."
+      question: t("faq.metaVerification.question"),
+      answer: t("faq.metaVerification.answer")
     },
     {
-      question: "Can we keep our current number?",
-      answer: "Often yes; we can migrate your existing WhatsApp Business number. If migration isn't possible, we'll set up a new WhatsApp Business API (WABA) account for you."
+      question: t("faq.keepNumber.question"),
+      answer: t("faq.keepNumber.answer")
     },
     {
-      question: "How many languages?",
-      answer: "English by default; others on request. We can configure your chatbot to support multiple languages based on your business needs."
+      question: t("faq.languages.question"),
+      answer: t("faq.languages.answer")
     },
     {
-      question: "Bookings & payments?",
-      answer: "Yes—Calendly/Google Calendar and Stripe. We integrate seamlessly with your existing booking and payment systems to enable automated scheduling and transactions."
+      question: t("faq.reservationsPayments.question"),
+      answer: t("faq.reservationsPayments.answer")
     },
     {
-      question: "Timeline to go live?",
-      answer: "Typically 5–7 days for the first flow + campaign. This includes setup, configuration, testing, and your first message template approval from Meta."
+      question: t("faq.goLive.question"),
+      answer: t("faq.goLive.answer")
     }
   ];
 
@@ -35,12 +38,12 @@ const FAQ = () => {
         <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Frequently <span className="relative inline-block">asked
+            {t("faq.title")} <span className="relative inline-block">{t("faq.frequentlyAsked")}
               <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
-            </span> questions
+            </span>
           </h2>
             <p className="text-xl text-muted-foreground">
-              Everything you need to know about getting started
+              {t("faq.subtitle")}
             </p>
           </div>
 

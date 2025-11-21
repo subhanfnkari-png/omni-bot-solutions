@@ -1,51 +1,59 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
-
-const goalCategories = [
-  {
-    title: "Staffing & Recruitment",
-    goals: ["Pre-screen candidates", "Collect documents/CV", "Book interviews", "Onboarding reminders"]
-  },
-  {
-    title: "Compliance & HSE",
-    goals: ["Enroll staff", "Certificate reminders", "Policy updates", "Compliance FAQs"]
-  },
-  {
-    title: "Telemarketing / Inside Sales",
-    goals: ["Warm leads", "Qualify interest", "Book sales calls", "Follow-up reminders"]
-  },
-  {
-    title: "Clinics & Dentists",
-    goals: ["Triage inquiries", "Book appointments", "Send reminders", "Pre-visit info"]
-  },
-  {
-    title: "Real Estate",
-    goals: ["Qualify buyers/tenants", "Schedule viewings", "Property lists", "Post-viewing follow-ups"]
-  },
-  {
-    title: "E-commerce / D2C",
-    goals: ["Recover carts", "Product FAQs", "Order tracking", "Promotions"]
-  },
-  {
-    title: "Education / Training",
-    goals: ["Capture applications", "Demo classes", "Materials delivery", "Payments & reminders"]
-  },
-  {
-    title: "Beauty / Salons",
-    goals: ["Book appointments", "Reduce no-shows", "Upsell packages", "Collect feedback"]
-  },
-  {
-    title: "Other",
-    goals: ["Lead capture", "FAQs", "Bookings/meetings", "Payments", "Custom workflow"]
-  }
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FunnelStep2Goals = () => {
   const { goals, updateGoals, setCurrentStep } = useFunnelStore();
+  const { t } = useTranslation();
   const [selectedGoals, setSelectedGoals] = useState<string[]>(goals);
   const [error, setError] = useState("");
+
+  const goalCategories = useMemo(() => {
+    const getCategory = (categoryKey: string) => {
+      return t(`funnel.step2.categories.${categoryKey}`, { returnObjects: true });
+    };
+    
+    return [
+      {
+        title: getCategory("staffing")?.title || "",
+        goals: getCategory("staffing")?.goals || []
+      },
+      {
+        title: getCategory("compliance")?.title || "",
+        goals: getCategory("compliance")?.goals || []
+      },
+      {
+        title: getCategory("telemarketing")?.title || "",
+        goals: getCategory("telemarketing")?.goals || []
+      },
+      {
+        title: getCategory("clinics")?.title || "",
+        goals: getCategory("clinics")?.goals || []
+      },
+      {
+        title: getCategory("realEstate")?.title || "",
+        goals: getCategory("realEstate")?.goals || []
+      },
+      {
+        title: getCategory("ecommerce")?.title || "",
+        goals: getCategory("ecommerce")?.goals || []
+      },
+      {
+        title: getCategory("education")?.title || "",
+        goals: getCategory("education")?.goals || []
+      },
+      {
+        title: getCategory("beauty")?.title || "",
+        goals: getCategory("beauty")?.goals || []
+      },
+      {
+        title: getCategory("other")?.title || "",
+        goals: getCategory("other")?.goals || []
+      }
+    ];
+  }, [t]);
 
   const toggleGoal = (goal: string) => {
     setError("");
@@ -58,7 +66,7 @@ const FunnelStep2Goals = () => {
 
   const handleNext = () => {
     if (selectedGoals.length === 0) {
-      setError("Please select at least one goal");
+      setError(t("funnel.step2.selectAtLeastOne"));
       return;
     }
     updateGoals(selectedGoals);
@@ -74,10 +82,10 @@ const FunnelStep2Goals = () => {
     <div className="max-w-5xl mx-auto animate-fade-in">
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          What outcomes do you want?
+          {t("funnel.step2.title")}
         </h2>
         <p className="text-lg text-muted-foreground">
-          Choose all that apply.
+          {t("funnel.step2.subtitle")}
         </p>
       </div>
 
@@ -125,7 +133,7 @@ const FunnelStep2Goals = () => {
       )}
 
       <p className="text-xs text-muted-foreground italic text-center mb-6">
-        💡 Your selections can be refined during the onboarding call
+        {t("funnel.step2.refineNote")}
       </p>
 
       <div className="flex justify-between gap-3 pt-8 pb-4 border-t border-border mt-8">
@@ -135,14 +143,14 @@ const FunnelStep2Goals = () => {
           size="default"
           className="min-w-[120px]"
         >
-          Back
+          {t("funnel.step2.back")}
         </Button>
         <Button
           onClick={handleNext}
           size="default"
           className="min-w-[140px]"
         >
-          Next
+          {t("funnel.step2.next")}
         </Button>
       </div>
     </div>

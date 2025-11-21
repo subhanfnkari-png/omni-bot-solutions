@@ -1,20 +1,57 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "@/hooks/useTranslation";
 import FunnelModal from "@/components/funnel/FunnelModal";
 import logo from "@/assets/sodlogo.png";
 
 const Navigation = () => {
   const [funnelOpen, setFunnelOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   const menuItems = [
-    { label: "Solutions", href: "#outcomes" },
-    { label: "How it works", href: "#video" },
-    { label: "Industries", href: "#industries" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "FAQ", href: "#faq" },
+    { label: t("navigation.solutions"), href: "#outcomes" },
+    { label: t("navigation.howItWorks"), href: "#video" },
+    { label: t("navigation.industries"), href: "#industries" },
+    { label: t("navigation.pricing"), href: "#pricing" },
+    { label: t("navigation.faq"), href: "#faq" },
   ];
+
+  const handleLanguageSwitch = (lang: "it" | "en") => {
+    setLanguage(lang);
+  };
+
+  const LanguageSwitcher = () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="font-medium hover:text-primary transition-colors gap-1 h-8 px-2"
+        >
+          {language.toUpperCase()}
+          <ChevronDown className="h-3 w-3" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[60px]">
+        <DropdownMenuItem
+          onClick={() => handleLanguageSwitch(language === "it" ? "en" : "it")}
+          className="cursor-pointer"
+        >
+          {language === "it" ? "EN" : "IT"}
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 
   return (
     <>
@@ -44,28 +81,33 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <Button 
-              size="default"
-              className="hidden md:flex shadow-warm hover:scale-105 transition-transform"
-              onClick={() => setFunnelOpen(true)}
-            >
-              Get started
-            </Button>
+            {/* Language Switcher & CTA */}
+            <div className="hidden md:flex items-center gap-4">
+              <LanguageSwitcher />
+              <Button 
+                size="default"
+                className="shadow-warm hover:scale-105 transition-transform"
+                onClick={() => setFunnelOpen(true)}
+              >
+                {t("navigation.startNow")}
+              </Button>
+            </div>
 
-            {/* Mobile Menu Button */}
-            <Button 
-              variant="outline" 
-              size="icon" 
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
-              )}
-            </Button>
+            {/* Mobile: Language Switcher & Menu Button */}
+            <div className="md:hidden flex items-center gap-2">
+              <LanguageSwitcher />
+              <Button 
+                variant="outline" 
+                size="icon" 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
+              </Button>
+            </div>
           </div>
 
           {/* Mobile menu dropdown */}
@@ -81,16 +123,18 @@ const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <Button 
-                size="default"
-                className="w-full shadow-warm"
-                onClick={() => {
-                  setFunnelOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-              >
-                Get started
-              </Button>
+              <div className="pt-2">
+                <Button 
+                  size="default"
+                  className="w-full shadow-warm"
+                  onClick={() => {
+                    setFunnelOpen(true);
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {t("navigation.startNow")}
+                </Button>
+              </div>
             </div>
           )}
         </div>

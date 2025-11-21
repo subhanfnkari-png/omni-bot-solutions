@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,20 +7,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, FileText, Clock, DollarSign, Calendar } from "lucide-react";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
-
-const timeSlots = [
-  "Today 9-10 AM",
-  "Today 2-3 PM",
-  "Today 4-5 PM",
-  "Tomorrow 9-10 AM",
-  "Tomorrow 2-3 PM",
-  "Tomorrow 4-5 PM",
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FunnelStep5Summary = () => {
   const store = useFunnelStore();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState(store.contact);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  
+  const timeSlots = useMemo(() => [
+    t("funnel.step5.timeSlots.today9_10"),
+    t("funnel.step5.timeSlots.today14_15"),
+    t("funnel.step5.timeSlots.today16_17"),
+    t("funnel.step5.timeSlots.tomorrow9_10"),
+    t("funnel.step5.timeSlots.tomorrow14_15"),
+    t("funnel.step5.timeSlots.tomorrow16_17"),
+  ], [t]);
 
   const updateField = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -52,21 +54,21 @@ const FunnelStep5Summary = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full name is required";
+      newErrors.fullName = t("funnel.step5.errors.fullNameRequired");
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("funnel.step5.errors.emailRequired");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Invalid email address";
+      newErrors.email = t("funnel.step5.errors.emailInvalid");
     }
 
     if (formData.website && !/^https?:\/\/.+/.test(formData.website)) {
-      newErrors.website = "Invalid URL (must start with http:// or https://)";
+      newErrors.website = t("funnel.step5.errors.websiteInvalid");
     }
 
     if (!formData.consents.contactAgreed) {
-      newErrors.consents = "You must agree to be contacted";
+      newErrors.consents = t("funnel.step5.errors.consentRequired");
     }
 
     setErrors(newErrors);
@@ -100,21 +102,21 @@ const FunnelStep5Summary = () => {
     <div className="max-w-6xl mx-auto animate-fade-in">
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Your tailored plan — final details
+          {t("funnel.step5.title")}
         </h2>
         <p className="text-lg text-muted-foreground">
-          We'll review your selections and send a proposal within 1–2 hours.
+          {t("funnel.step5.subtitle")}
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 mb-8">
         {/* Left Column - Summary */}
         <div className="bg-gradient-soft rounded-2xl p-5 md:p-6 border border-border">
-          <h3 className="text-2xl font-bold mb-6">What you selected</h3>
+          <h3 className="text-2xl font-bold mb-6">{t("funnel.step5.whatYouSelected")}</h3>
 
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold text-sm text-muted-foreground mb-2">Industry</h4>
+              <h4 className="font-semibold text-sm text-muted-foreground mb-2">{t("funnel.step5.industry")}</h4>
               <Badge variant="secondary" className="text-base px-3 py-1">
                 {store.industry}
               </Badge>
@@ -126,7 +128,7 @@ const FunnelStep5Summary = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-sm text-muted-foreground mb-2">Goals</h4>
+              <h4 className="font-semibold text-sm text-muted-foreground mb-2">{t("funnel.step5.goals")}</h4>
               <ul className="space-y-2">
                 {store.goals.map((goal) => (
                   <li key={goal} className="flex items-start gap-2 text-sm">
@@ -138,7 +140,7 @@ const FunnelStep5Summary = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-sm text-muted-foreground mb-2">Features</h4>
+              <h4 className="font-semibold text-sm text-muted-foreground mb-2">{t("funnel.step5.features")}</h4>
               <ul className="space-y-2">
                 {store.features.essentials.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm">
@@ -156,9 +158,9 @@ const FunnelStep5Summary = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-sm text-muted-foreground mb-2">Integrations</h4>
+              <h4 className="font-semibold text-sm text-muted-foreground mb-2">{t("funnel.step5.integrations")}</h4>
               {store.integrations.preset === "decide-later" ? (
-                <Badge variant="outline">Decide later</Badge>
+                <Badge variant="outline">{t("funnel.step5.decideLater")}</Badge>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {store.integrations.selected.map((integration) => (
@@ -172,13 +174,13 @@ const FunnelStep5Summary = () => {
           </div>
 
           <div className="mt-8 pt-6 border-t border-border">
-            <h3 className="text-xl font-bold mb-4">What you'll receive next</h3>
+            <h3 className="text-xl font-bold mb-4">{t("funnel.step5.whatYoullReceive")}</h3>
             <ul className="space-y-3">
               {[
-                { icon: FileText, text: "A 2–3 page proposal (scope, inclusions, exclusions)" },
-                { icon: Clock, text: "A timeline to go live (typically 5–7 days)" },
-                { icon: DollarSign, text: "A price band (setup + monthly)" },
-                { icon: Calendar, text: "A calendly link to confirm a quick kickoff call" },
+                { icon: FileText, text: t("funnel.step5.proposal") },
+                { icon: Clock, text: t("funnel.step5.timeline") },
+                { icon: DollarSign, text: t("funnel.step5.priceBand") },
+                { icon: Calendar, text: t("funnel.step5.calendlyLink") },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -190,7 +192,7 @@ const FunnelStep5Summary = () => {
               })}
             </ul>
             <p className="text-xs text-muted-foreground italic mt-4">
-              This is not a binding quote. We finalize after a 10-min discovery.
+              {t("funnel.step5.notBinding")}
             </p>
           </div>
         </div>
@@ -199,7 +201,7 @@ const FunnelStep5Summary = () => {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-2">
-              Full name <span className="text-destructive">*</span>
+              {t("funnel.step5.fullName")} <span className="text-destructive">{t("funnel.step5.required")}</span>
             </label>
             <Input
               value={formData.fullName}
@@ -214,7 +216,7 @@ const FunnelStep5Summary = () => {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Work email <span className="text-destructive">*</span>
+              {t("funnel.step5.workEmail")} <span className="text-destructive">{t("funnel.step5.required")}</span>
             </label>
             <Input
               type="email"
@@ -230,7 +232,7 @@ const FunnelStep5Summary = () => {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Company <span className="text-xs text-muted-foreground">(optional)</span>
+              {t("funnel.step5.company")} <span className="text-xs text-muted-foreground">{t("funnel.step5.optional")}</span>
             </label>
             <Input
               value={formData.company}
@@ -241,7 +243,7 @@ const FunnelStep5Summary = () => {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Website <span className="text-xs text-muted-foreground">(optional)</span>
+              {t("funnel.step5.website")} <span className="text-xs text-muted-foreground">{t("funnel.step5.optional")}</span>
             </label>
             <Input
               value={formData.website}
@@ -256,7 +258,7 @@ const FunnelStep5Summary = () => {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              WhatsApp number <span className="text-xs text-muted-foreground">(optional)</span>
+              {t("funnel.step5.whatsappNumber")} <span className="text-xs text-muted-foreground">{t("funnel.step5.optional")}</span>
             </label>
             <Input
               value={formData.whatsapp}
@@ -266,13 +268,13 @@ const FunnelStep5Summary = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Preferred contact time</label>
+            <label className="block text-sm font-medium mb-2">{t("funnel.step5.preferredContactTime")}</label>
             <Select
               value={formData.preferredTime}
               onValueChange={(value) => updateField("preferredTime", value)}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select a time slot" />
+                <SelectValue placeholder={t("funnel.step5.selectTimeSlot")} />
               </SelectTrigger>
               <SelectContent>
                 {timeSlots.map((slot) => (
@@ -285,11 +287,11 @@ const FunnelStep5Summary = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Notes</label>
+            <label className="block text-sm font-medium mb-2">{t("funnel.step5.notes")}</label>
             <Textarea
               value={formData.notes}
               onChange={(e) => updateField("notes", e.target.value)}
-              placeholder="Deadlines, must-have features, budget range..."
+              placeholder={t("funnel.step5.notesPlaceholder")}
               className="min-h-24"
             />
           </div>
@@ -302,8 +304,8 @@ const FunnelStep5Summary = () => {
                 className="mt-0.5"
               />
               <label className="text-sm leading-relaxed">
-                I agree to be contacted about this request via email (and WhatsApp if provided).{" "}
-                <span className="text-destructive">*</span>
+                {t("funnel.step5.consentContact")}{" "}
+                <span className="text-destructive">{t("funnel.step5.required")}</span>
               </label>
             </div>
 
@@ -314,7 +316,7 @@ const FunnelStep5Summary = () => {
                 className="mt-0.5"
               />
               <label className="text-sm leading-relaxed">
-                Send me a copy of this plan by email.
+                {t("funnel.step5.consentEmailCopy")}
               </label>
             </div>
 
@@ -325,7 +327,7 @@ const FunnelStep5Summary = () => {
                 className="mt-0.5"
               />
               <label className="text-sm leading-relaxed">
-                I'd like to sign an NDA before sharing internal documents.
+                {t("funnel.step5.consentNDA")}
               </label>
             </div>
 
@@ -339,7 +341,7 @@ const FunnelStep5Summary = () => {
             size="lg"
             className="w-full h-14 text-base"
           >
-            Get my tailored plan
+            {t("funnel.step5.getTailoredPlan")}
           </Button>
 
           <div className="text-center">
@@ -347,13 +349,12 @@ const FunnelStep5Summary = () => {
               href="#"
               className="text-sm text-primary hover:underline"
             >
-              Prefer to talk now? Book a 15-min call
+              {t("funnel.step5.preferToTalk")}
             </a>
           </div>
 
           <p className="text-xs text-muted-foreground text-center leading-relaxed">
-            Your information is kept confidential and never sold. You can request deletion or
-            export at any time. reCAPTCHA protected.
+            {t("funnel.step5.privacyNote")}
           </p>
         </div>
       </div>
@@ -365,14 +366,14 @@ const FunnelStep5Summary = () => {
           size="default"
           className="min-w-[120px]"
         >
-          Back
+          {t("funnel.step5.back")}
         </Button>
         <Button
           onClick={handleSubmit}
           size="default"
           className="min-w-[140px]"
         >
-          Get my tailored plan
+          {t("funnel.step5.getTailoredPlan")}
         </Button>
       </div>
     </div>

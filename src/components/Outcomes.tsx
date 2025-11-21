@@ -1,30 +1,33 @@
 import { Card } from "@/components/ui/card";
 import { Calendar, Zap, Target } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Outcomes = () => {
+  const { t } = useTranslation();
+  
   const outcomes = [
     {
       icon: Calendar,
-      title: "More bookings",
-      description: "Turn messages into meetings automatically.",
-      stat: "+47%",
-      statLabel: "avg booking rate",
+      title: t("outcomes.moreBookings.title"),
+      description: t("outcomes.moreBookings.description"),
+      stat: t("outcomes.moreBookings.stat"),
+      statLabel: t("outcomes.moreBookings.statLabel"),
       delay: "0ms"
     },
     {
       icon: Zap,
-      title: "Faster support",
-      description: "Instant answers from your docs; clean handoff to your team.",
-      stat: "3x",
-      statLabel: "faster response time",
+      title: t("outcomes.fasterSupport.title"),
+      description: t("outcomes.fasterSupport.description"),
+      stat: t("outcomes.fasterSupport.stat"),
+      statLabel: t("outcomes.fasterSupport.statLabel"),
       delay: "100ms"
     },
     {
       icon: Target,
-      title: "Stronger follow-ups",
-      description: "Approved templates that re-engage leads at scale.",
-      stat: "+62%",
-      statLabel: "conversion rate",
+      title: t("outcomes.moreEffectiveFollowUps.title"),
+      description: t("outcomes.moreEffectiveFollowUps.description"),
+      stat: t("outcomes.moreEffectiveFollowUps.stat"),
+      statLabel: t("outcomes.moreEffectiveFollowUps.statLabel"),
       delay: "200ms"
     }
   ];
@@ -34,9 +37,9 @@ const Outcomes = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-            Outcomes you can <span className="relative inline-block">expect
+            {t("outcomes.title")} <span className="relative inline-block">{t("outcomes.in30Days")}
               <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
-            </span> in 30 days
+            </span>
           </h2>
         </div>
 

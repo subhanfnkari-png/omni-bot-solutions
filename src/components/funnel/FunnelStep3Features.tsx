@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
-
-const essentialFeatures = [
-  "WhatsApp Cloud API connection + webhook",
-  "3 approved message templates with personalization",
-  "Knowledge base from your docs/URLs (RAG)",
-  "Admin panel: Inbox, Contacts/Lists, Templates, Knowledge, Flows, Campaigns, Reports, Roles",
-  "Reporting (sends, delivered, replies, conversions)",
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FunnelStep3Features = () => {
   const { features, updateFeatures, setCurrentStep } = useFunnelStore();
+  const { t } = useTranslation();
+  
+  const essentialFeatures = useMemo(() => [
+    t("funnel.step3.features.whatsapp"),
+    t("funnel.step3.features.templates"),
+    t("funnel.step3.features.knowledgeBase"),
+    t("funnel.step3.features.adminPanel"),
+    t("funnel.step3.features.reporting"),
+  ], [t]);
+  
   const [selectedEssentials, setSelectedEssentials] = useState<string[]>(
     features.essentials.length > 0 ? features.essentials : essentialFeatures
   );
@@ -42,18 +45,18 @@ const FunnelStep3Features = () => {
     <div className="max-w-4xl mx-auto animate-fade-in">
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Choose your features
+          {t("funnel.step3.title")}
         </h2>
         <p className="text-lg text-muted-foreground">
-          Essentials are pre-selected. Adjust as you like and add anything custom.
+          {t("funnel.step3.subtitle")}
         </p>
       </div>
 
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <h3 className="text-xl font-semibold">Essentials</h3>
+          <h3 className="text-xl font-semibold">{t("funnel.step3.essentials")}</h3>
           <Badge variant="secondary" className="bg-primary/10 text-primary">
-            Recommended
+            {t("funnel.step3.recommended")}
           </Badge>
         </div>
 
@@ -89,18 +92,18 @@ const FunnelStep3Features = () => {
 
       <div className="mb-8">
         <label className="block text-sm font-medium mb-2">
-          Other features you need
+          {t("funnel.step3.otherFeatures")}
         </label>
         <Textarea
           value={otherFeatures}
           onChange={(e) => setOtherFeatures(e.target.value)}
-          placeholder="Describe any additional features you need..."
+          placeholder={t("funnel.step3.otherPlaceholder")}
           className="min-h-20"
           maxLength={500}
         />
         <div className="flex justify-between items-center mt-1">
           <span className="text-xs text-muted-foreground italic">
-            You can change features during onboarding.
+            {t("funnel.step3.changeNote")}
           </span>
           <span className="text-xs text-muted-foreground">
             {otherFeatures.length}/500
@@ -115,14 +118,14 @@ const FunnelStep3Features = () => {
           size="default"
           className="min-w-[120px]"
         >
-          Back
+          {t("funnel.step3.back")}
         </Button>
         <Button
           onClick={handleNext}
           size="default"
           className="min-w-[140px]"
         >
-          Next
+          {t("funnel.step3.next")}
         </Button>
       </div>
     </div>

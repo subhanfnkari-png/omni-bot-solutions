@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
+import { useTranslation } from "@/hooks/useTranslation";
 import FunnelProgress from "./FunnelProgress";
 import FunnelStep1Industry from "./FunnelStep1Industry";
 import FunnelStep2Goals from "./FunnelStep2Goals";
@@ -17,6 +18,7 @@ interface FunnelModalProps {
 
 const FunnelModal = ({ open, onOpenChange }: FunnelModalProps) => {
   const { currentStep, resetFunnel } = useFunnelStore();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Reset funnel when modal closes
@@ -28,7 +30,7 @@ const FunnelModal = ({ open, onOpenChange }: FunnelModalProps) => {
   const handleClose = () => {
     if (currentStep > 1 && currentStep < 6) {
       const confirmed = window.confirm(
-        "Are you sure you want to close? Your progress will be lost."
+        t("funnel.modal.closeConfirm")
       );
       if (!confirmed) return;
     }
@@ -44,7 +46,7 @@ const FunnelModal = ({ open, onOpenChange }: FunnelModalProps) => {
           className="absolute right-4 top-4 z-50 rounded-full p-2 bg-background/80 backdrop-blur-sm border border-border hover:bg-accent transition-colors"
         >
           <X className="h-5 w-5" />
-          <span className="sr-only">Close</span>
+          <span className="sr-only">{t("funnel.modal.close")}</span>
         </button>
 
         {/* Progress Bar - Hide on Thank You screen */}

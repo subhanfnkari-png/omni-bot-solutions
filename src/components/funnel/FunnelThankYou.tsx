@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface FunnelThankYouProps {
   onClose: () => void;
 }
 
 const FunnelThankYou = ({ onClose }: FunnelThankYouProps) => {
+  const { t } = useTranslation();
+  
   const handleReturn = () => {
     onClose();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -20,16 +23,15 @@ const FunnelThankYou = ({ onClose }: FunnelThankYouProps) => {
       </div>
 
       <h2 className="text-4xl md:text-5xl font-bold mb-6">
-        Plan received!
+        {t("funnel.thankYou.title")}
       </h2>
 
       <div className="space-y-4 mb-8 text-lg text-muted-foreground">
         <p>
-          We'll reply within <strong className="text-foreground">1–2 hours</strong> with scope,
-          timeline, and a price band.
+          {t("funnel.thankYou.replyWithin")} <strong className="text-foreground">{t("funnel.thankYou.hours")}</strong> {t("funnel.thankYou.withDetails")}
         </p>
         <p>
-          Check your email for a confirmation and next steps.
+          {t("funnel.thankYou.checkEmail")}
         </p>
       </div>
 
@@ -38,15 +40,15 @@ const FunnelThankYou = ({ onClose }: FunnelThankYouProps) => {
         size="lg"
         className="min-w-64 h-14 text-base mb-6"
       >
-        Return to homepage
+        {t("funnel.thankYou.returnToHomepage")}
       </Button>
 
       <p className="text-sm text-muted-foreground">
-        Need it urgent?{" "}
+        {t("funnel.thankYou.needUrgent")}{" "}
         <a href="mailto:hello@example.com" className="text-primary hover:underline">
-          Reply to the confirmation email
+          {t("funnel.thankYou.replyEmail")}
         </a>{" "}
-        and we'll prioritize.
+        {t("funnel.thankYou.andPrioritize")}
       </p>
     </div>
   );

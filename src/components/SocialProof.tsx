@@ -1,6 +1,8 @@
 import { Building2, Boxes, TrendingUp, Briefcase, Store, GraduationCap, Heart, Phone } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const SocialProof = () => {
+  const { t } = useTranslation();
   const companies = [
     { Icon: Building2, name: "TechCorp" },
     { Icon: Boxes, name: "LogiFlow" },
@@ -19,7 +21,7 @@ const SocialProof = () => {
     <section className="py-16 bg-white border-y border-border overflow-hidden">
       <div className="container mx-auto px-4">
         <p className="text-center text-base font-medium text-foreground mb-10">
-          Trusted by leading companies worldwide
+          {t("socialProof.trustedBy")}
         </p>
         
         <div className="relative">

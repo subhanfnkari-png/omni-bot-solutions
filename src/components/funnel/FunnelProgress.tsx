@@ -1,19 +1,21 @@
 import { Check } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface FunnelProgressProps {
   currentStep: number;
   totalSteps: number;
 }
 
-const stepLabels = [
-  "Industry",
-  "Goals",
-  "Features",
-  "Integrations",
-  "Summary"
-];
-
 const FunnelProgress = ({ currentStep, totalSteps }: FunnelProgressProps) => {
+  const { t } = useTranslation();
+  
+  const stepLabels = [
+    t("funnel.progress.industry"),
+    t("funnel.progress.goals"),
+    t("funnel.progress.features"),
+    t("funnel.progress.integrations"),
+    t("funnel.progress.summary")
+  ];
   return (
     <div className="w-full bg-background/50 backdrop-blur-sm border-b border-border py-6 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">

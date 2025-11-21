@@ -3,66 +3,68 @@ import { Briefcase, Shield, Phone, Stethoscope, Home, ShoppingCart, GraduationCa
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
-
-const industries = [
-  {
-    id: "staffing",
-    name: "Staffing & Recruitment",
-    description: "Pre-screen, collect CVs, book interviews",
-    icon: Briefcase,
-  },
-  {
-    id: "compliance",
-    name: "Compliance & HSE",
-    description: "Enroll courses, chase expiring certificates",
-    icon: Shield,
-  },
-  {
-    id: "telemarketing",
-    name: "Telemarketing / Inside Sales",
-    description: "Warm leads, qualify, book calls",
-    icon: Phone,
-  },
-  {
-    id: "clinics",
-    name: "Clinics & Dentists",
-    description: "Triage, bookings, reminders",
-    icon: Stethoscope,
-  },
-  {
-    id: "realestate",
-    name: "Real Estate",
-    description: "Qualify leads, schedule viewings",
-    icon: Home,
-  },
-  {
-    id: "ecommerce",
-    name: "E-commerce / D2C",
-    description: "Recover carts, track orders",
-    icon: ShoppingCart,
-  },
-  {
-    id: "education",
-    name: "Education / Training",
-    description: "Apply, demo class, enroll",
-    icon: GraduationCap,
-  },
-  {
-    id: "beauty",
-    name: "Beauty / Salons",
-    description: "Bookings, deposits, no-shows",
-    icon: Scissors,
-  },
-  {
-    id: "other",
-    name: "Other",
-    description: "Something else? Tell us your goal",
-    icon: MoreHorizontal,
-  },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FunnelStep1Industry = () => {
   const { industry, industryNote, updateIndustry, setCurrentStep } = useFunnelStore();
+  const { t } = useTranslation();
+  
+  const industries = [
+    {
+      id: "staffing",
+      name: t("funnel.industries.staffing.name"),
+      description: t("funnel.industries.staffing.description"),
+      icon: Briefcase,
+    },
+    {
+      id: "compliance",
+      name: t("funnel.industries.compliance.name"),
+      description: t("funnel.industries.compliance.description"),
+      icon: Shield,
+    },
+    {
+      id: "telemarketing",
+      name: t("funnel.industries.telemarketing.name"),
+      description: t("funnel.industries.telemarketing.description"),
+      icon: Phone,
+    },
+    {
+      id: "clinics",
+      name: t("funnel.industries.clinics.name"),
+      description: t("funnel.industries.clinics.description"),
+      icon: Stethoscope,
+    },
+    {
+      id: "realestate",
+      name: t("funnel.industries.realEstate.name"),
+      description: t("funnel.industries.realEstate.description"),
+      icon: Home,
+    },
+    {
+      id: "ecommerce",
+      name: t("funnel.industries.ecommerce.name"),
+      description: t("funnel.industries.ecommerce.description"),
+      icon: ShoppingCart,
+    },
+    {
+      id: "education",
+      name: t("funnel.industries.education.name"),
+      description: t("funnel.industries.education.description"),
+      icon: GraduationCap,
+    },
+    {
+      id: "beauty",
+      name: t("funnel.industries.beauty.name"),
+      description: t("funnel.industries.beauty.description"),
+      icon: Scissors,
+    },
+    {
+      id: "other",
+      name: t("funnel.industries.other.name"),
+      description: t("funnel.industries.other.description"),
+      icon: MoreHorizontal,
+    },
+  ];
   const [selectedIndustry, setSelectedIndustry] = useState(industry);
   const [note, setNote] = useState(industryNote);
 
@@ -70,6 +72,9 @@ const FunnelStep1Industry = () => {
     setSelectedIndustry(id);
     if (id !== "other") {
       setNote("");
+      // Auto-advance to next step for non-"other" selections
+      updateIndustry(id, "");
+      setCurrentStep(2);
     }
   };
 
@@ -84,10 +89,10 @@ const FunnelStep1Industry = () => {
     <div className="max-w-4xl mx-auto animate-fade-in">
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Which best describes your business?
+          {t("funnel.step1.title")}
         </h2>
         <p className="text-lg text-muted-foreground">
-          We'll tailor the next steps to your workflow.
+          {t("funnel.step1.subtitle")}
         </p>
       </div>
 
@@ -124,12 +129,12 @@ const FunnelStep1Industry = () => {
       {selectedIndustry === "other" && (
         <div className="mb-8 animate-fade-in">
           <label className="block text-sm font-medium mb-2">
-            Describe your business and the outcome you want in the first 30 days
+            {t("funnel.step1.otherLabel")}
           </label>
           <Textarea
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            placeholder="e.g., answer common questions, collect leads to Google Sheets, book calls Tue/Thu only..."
+            placeholder={t("funnel.step1.otherPlaceholder")}
             className="min-h-20"
             maxLength={500}
           />
@@ -146,7 +151,7 @@ const FunnelStep1Industry = () => {
           size="default"
           className="min-w-[140px]"
         >
-          Next
+          {t("funnel.step1.next")}
         </Button>
       </div>
     </div>

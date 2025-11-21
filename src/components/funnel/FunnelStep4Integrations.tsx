@@ -1,50 +1,52 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Calendar, Database, ShoppingBag, Headphones, FileText, Mail, HardDrive, Info } from "lucide-react";
 import { useFunnelStore } from "@/hooks/useFunnelStore";
-
-const presets = [
-  {
-    id: "light",
-    name: "Light",
-    description: "No integrations (export CSV/Google Sheets)",
-    icon: FileText,
-    integrations: [],
-  },
-  {
-    id: "standard",
-    name: "Standard",
-    description: "Calendar + CRM",
-    icon: Calendar,
-    integrations: ["Calendly", "Google Calendar", "HubSpot", "Pipedrive", "Google Sheets"],
-  },
-  {
-    id: "commerce",
-    name: "Commerce",
-    description: "Shopify/Woo + Stripe",
-    icon: ShoppingBag,
-    integrations: ["Shopify", "WooCommerce", "Stripe"],
-  },
-  {
-    id: "support",
-    name: "Support",
-    description: "Zendesk/Freshdesk",
-    icon: Headphones,
-    integrations: ["Zendesk", "Freshdesk", "Intercom"],
-  },
-];
-
-const allIntegrations = {
-  calendar: ["Calendly", "Google Calendar"],
-  crm: ["HubSpot", "Pipedrive", "Google Sheets"],
-  commerce: ["Shopify", "WooCommerce", "Stripe"],
-  support: ["Zendesk", "Freshdesk", "Intercom"],
-  others: ["Google Drive", "Mailchimp", "Klaviyo"],
-};
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FunnelStep4Integrations = () => {
   const { integrations, updateIntegrations, setCurrentStep } = useFunnelStore();
+  const { t } = useTranslation();
+  
+  const presets = useMemo(() => [
+    {
+      id: "light",
+      name: t("funnel.step4.presets.light.name"),
+      description: t("funnel.step4.presets.light.description"),
+      icon: FileText,
+      integrations: [],
+    },
+    {
+      id: "standard",
+      name: t("funnel.step4.presets.standard.name"),
+      description: t("funnel.step4.presets.standard.description"),
+      icon: Calendar,
+      integrations: ["Calendly", "Google Calendar", "HubSpot", "Pipedrive", "Google Sheets"],
+    },
+    {
+      id: "commerce",
+      name: t("funnel.step4.presets.commerce.name"),
+      description: t("funnel.step4.presets.commerce.description"),
+      icon: ShoppingBag,
+      integrations: ["Shopify", "WooCommerce", "Stripe"],
+    },
+    {
+      id: "support",
+      name: t("funnel.step4.presets.support.name"),
+      description: t("funnel.step4.presets.support.description"),
+      icon: Headphones,
+      integrations: ["Zendesk", "Freshdesk", "Intercom"],
+    },
+  ], [t]);
+
+  const allIntegrations = {
+    calendar: ["Calendly", "Google Calendar"],
+    crm: ["HubSpot", "Pipedrive", "Google Sheets"],
+    commerce: ["Shopify", "WooCommerce", "Stripe"],
+    support: ["Zendesk", "Freshdesk", "Intercom"],
+    others: ["Google Drive", "Mailchimp", "Klaviyo"],
+  };
   const [selectedPreset, setSelectedPreset] = useState(integrations.preset || "");
   const [selectedIntegrations, setSelectedIntegrations] = useState<string[]>(
     integrations.selected || []
@@ -88,10 +90,10 @@ const FunnelStep4Integrations = () => {
     <div className="max-w-4xl mx-auto animate-fade-in">
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Connect to your tools
+          {t("funnel.step4.title")}
         </h2>
         <p className="text-lg text-muted-foreground">
-          Pick a preset or decide later. You can adjust during onboarding.
+          {t("funnel.step4.subtitle")}
         </p>
       </div>
 
@@ -127,7 +129,7 @@ const FunnelStep4Integrations = () => {
 
       {selectedPreset && !decideLater && (
         <div className="mb-8 animate-fade-in">
-          <h3 className="text-sm font-semibold mb-3">Tweak your integrations</h3>
+          <h3 className="text-sm font-semibold mb-3">{t("funnel.step4.tweakIntegrations")}</h3>
           <div className="flex flex-wrap gap-2">
             {Object.entries(allIntegrations).map(([category, items]) => (
               items.map((item) => {
@@ -160,13 +162,13 @@ const FunnelStep4Integrations = () => {
           onClick={handleDecideLater}
           className="min-w-[180px]"
         >
-          Decide later
+          {t("funnel.step4.decideLater")}
         </Button>
       </div>
 
       <p className="text-xs text-muted-foreground text-center mb-8 flex items-center justify-center gap-2">
         <Info className="w-3 h-3" />
-        We use official APIs or secure webhooks. Specifics are finalized on the kickoff call.
+        {t("funnel.step4.infoNote")}
       </p>
 
       <div className="flex justify-between gap-3 pt-8 pb-4 border-t border-border mt-8">
@@ -176,14 +178,14 @@ const FunnelStep4Integrations = () => {
           size="default"
           className="min-w-[120px]"
         >
-          Back
+          {t("funnel.step4.back")}
         </Button>
         <Button
           onClick={handleNext}
           size="default"
           className="min-w-[140px]"
         >
-          Next
+          {t("funnel.step4.next")}
         </Button>
       </div>
     </div>

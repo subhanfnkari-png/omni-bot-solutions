@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users, Clock, TrendingUp, Calendar, CheckCircle } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 import heroImage from "@/assets/hero-person.jpg";
 import FunnelModal from "@/components/funnel/FunnelModal";
 
 const Hero = () => {
   const [funnelOpen, setFunnelOpen] = useState(false);
+  const { t } = useTranslation();
 
   const scrollToVideo = () => {
     document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' });
@@ -24,14 +26,14 @@ const Hero = () => {
             <div className="text-center md:text-left animate-fade-in">
               {/* Headline */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight text-white">
-                Turn WhatsApp into a <span className="relative inline-block">revenue channel
+                {t("hero.headline")} <span className="relative inline-block">{t("hero.headlineHighlight")}
                   <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
                 </span>
               </h1>
               
               {/* Subtitle */}
               <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto md:mx-0">
-                We build custom chatbots that book appointments, answer from your docs, send approved templates, and hand off to a human—fast.
+                {t("hero.subtitle")}
               </p>
 
               {/* Two CTA buttons */}
@@ -42,7 +44,7 @@ const Hero = () => {
                   style={{ background: 'white', backgroundColor: 'white' }}
                   onClick={() => setFunnelOpen(true)}
                 >
-                  Get started
+                  {t("hero.startNow")}
                 </Button>
                 <Button 
                   size="lg" 
@@ -50,7 +52,7 @@ const Hero = () => {
                   className="bg-transparent text-white border-2 border-white hover:bg-white/10 shadow-warm hover:text-white"
                   onClick={scrollToVideo}
                 >
-                  Watch how it works
+                  {t("hero.watchHowItWorks")}
                 </Button>
               </div>
 
@@ -62,7 +64,7 @@ const Hero = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-foreground">Go live in 5–7 days</span>
+              <span className="text-xs font-medium text-foreground">{t("hero.readyIn7Days")}</span>
             </div>
 
             <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-white/20 shadow-sm">
@@ -71,7 +73,7 @@ const Hero = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-foreground">24/7 replies + handover</span>
+              <span className="text-xs font-medium text-foreground">{t("hero.answers24_7")}</span>
             </div>
 
             <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-white/20 shadow-sm">
@@ -80,7 +82,7 @@ const Hero = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <span className="text-xs font-medium text-foreground">WhatsApp Business (Meta)</span>
+              <span className="text-xs font-medium text-foreground">{t("hero.startNowChip")}</span>
             </div>
           </div>
             </div>
@@ -100,8 +102,7 @@ const Hero = () => {
                 <div className="flex items-start gap-2 lg:gap-3">
                   <MessageCircle className="w-4 h-4 lg:w-5 lg:h-5 text-primary flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-foreground">Hi Debra! 👋</p>
-                    <p className="text-muted-foreground mt-0.5 lg:mt-1 hidden lg:block">How can I help you today?</p>
+                    <p className="font-medium text-foreground">{t("hero.chatBubble1")}</p>
                   </div>
                 </div>
               </div>
@@ -110,7 +111,7 @@ const Hero = () => {
                 <div className="flex items-start gap-2 lg:gap-3">
                   <Calendar className="w-4 h-4 lg:w-5 lg:h-5 text-primary flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-foreground">Schedule a tour?</p>
+                    <p className="font-medium text-foreground">{t("hero.chatBubble2")}</p>
                   </div>
                 </div>
               </div>
@@ -119,8 +120,7 @@ const Hero = () => {
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-success flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-sm text-foreground">Available slots:</p>
-                    <p className="text-muted-foreground text-xs mt-1">Tomorrow 2PM, 4PM</p>
+                    <p className="font-medium text-sm text-foreground">{t("hero.chatBubble3")}</p>
                   </div>
                 </div>
               </div>
@@ -129,8 +129,7 @@ const Hero = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-sm text-foreground">Booked! ✓</p>
-                    <p className="text-muted-foreground text-xs mt-1">See you tomorrow at 2PM</p>
+                    <p className="font-medium text-sm text-foreground">{t("hero.chatBubble4")}</p>
                   </div>
                 </div>
               </div>

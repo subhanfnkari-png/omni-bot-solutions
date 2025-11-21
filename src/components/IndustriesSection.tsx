@@ -1,16 +1,19 @@
 import { Card } from "@/components/ui/card";
 import { Briefcase, Shield, Phone, Stethoscope, Building, ShoppingCart, GraduationCap, Sparkles } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const IndustriesSection = () => {
+  const { t } = useTranslation();
+  
   const industries = [
-    { icon: Briefcase, name: "Staffing & Recruitment" },
-    { icon: Shield, name: "Compliance & HSE" },
-    { icon: Phone, name: "Telemarketing / Inside Sales" },
-    { icon: Stethoscope, name: "Clinics & Dentists" },
-    { icon: Building, name: "Real Estate" },
-    { icon: ShoppingCart, name: "E-commerce / D2C" },
-    { icon: GraduationCap, name: "Education / Training" },
-    { icon: Sparkles, name: "Beauty / Salons" },
+    { icon: Briefcase, name: t("industries.staffing") },
+    { icon: Shield, name: t("industries.compliance") },
+    { icon: Phone, name: t("industries.telemarketing") },
+    { icon: Stethoscope, name: t("industries.clinics") },
+    { icon: Building, name: t("industries.realEstate") },
+    { icon: ShoppingCart, name: t("industries.ecommerce") },
+    { icon: GraduationCap, name: t("industries.education") },
+    { icon: Sparkles, name: t("industries.beauty") },
   ];
 
   return (
@@ -18,9 +21,9 @@ const IndustriesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Popular <span className="relative inline-block">industries
+            {t("industries.title")} <span className="relative inline-block">{t("industries.weServe")}
               <span className="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/50 to-transparent -z-10"></span>
-            </span> we serve
+            </span>
           </h2>
         </div>
 
